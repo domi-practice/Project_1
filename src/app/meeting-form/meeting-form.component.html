@@ -1,0 +1,27 @@
+<form (submit)="onSubmit(meetingForm)" #meetingForm="ngForm">
+  <div>
+    <label for="client">Client:</label>
+    <select id="client" [(ngModel)]="clientId" name="clientId" required>
+      <option *ngFor="let client of clients" [value]="client.id">
+        {{ client.name }}
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="meeting-date">Date:</label>
+    <input type="date" id="meeting-date" name="date" [(ngModel)]="date" required>
+  </div>
+  <div>
+    <label for="meeting-time">Time:</label>
+    <input type="time" id="meeting-time" name="time" [(ngModel)]="time" required>
+  </div>
+  <div>
+    <label for="meeting-location">Location:</label>
+    <input type="text" id="meeting-location" name="location" [(ngModel)]="location" required>
+  </div>
+  <div>
+    <label for="meeting-description">Description:</label>
+    <textarea id="meeting-description" name="description" [(ngModel)]="description" required></textarea>
+  </div>
+  <button type="submit">Schedule Meeting</button>
+</form>

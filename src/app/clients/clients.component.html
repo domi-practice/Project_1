@@ -1,0 +1,15 @@
+<form #clientForm="ngForm">
+  <div>
+    <label for="client-name">Name:</label>
+    <input type="text" id="client-name" name="name" [(ngModel)]="clientName" required>
+  </div>
+  <div>
+    <label for="client-phone">Phone:</label>
+    <input type="tel" id="client-phone" name="phone" [(ngModel)]="clientPhone" required>
+  </div>
+  <div>
+    <label for="client-email">Email:</label>
+    <input type="email" id="client-email" name="email" [(ngModel)]="clientEmail" required>
+  </div>
+  <button type="button" [disabled]="!clientForm.valid" (click)="onSubmit(); onAddClient(clientForm)">Add Client</button>
+</form>

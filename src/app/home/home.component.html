@@ -1,0 +1,79 @@
+<p>
+  We specialize in designing and managing architectural projects. Our team of experts will help you turn your dream project into a reality.
+</p>
+<p>
+  Use the navigation links above to manage clients and schedule meetings.
+</p>
+
+<div class="content">
+  <div class="clients">
+    <h2>Clients</h2>
+    <div class="clients-table" *ngIf="clients.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td *ngIf="!client.isEditing">{{client.name}}</td>
+            <td *ngIf="!client.isEditing">{{client.email}}</td>
+            <td *ngIf="!client.isEditing">{{client.phone}}</td>
+            <td *ngIf="client.isEditing">
+              <input [(ngModel)]="client.name" class="form-control" />
+            </td>
+            <td *ngIf="client.isEditing">
+              <input [(ngModel)]="client.email" class="form-control" />
+            </td>
+            <td *ngIf="client.isEditing">
+              <input [(ngModel)]="client.phone" class="form-control" />
+            </td>
+            <td>
+              <button (click)="editClient(client.id)" class="btn btn-warning btn-sm">Edit</button>
+            </td>
+            <td *ngIf="client.isEditing">
+              <button (click)="saveClient(client.id)" class="btn btn-success btn-sm">Save</button>
+            </td>
+            <td>
+              <button class="delete-button" (click)="removeClient(client.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="meetings">
+    <h2>Meetings</h2>
+    <div class="meetings-table" *ngIf="clients.length > 0 && meetings.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Client Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let meeting of meetings">
+            <td>{{meeting.client_name}}</td>
+            <td>{{ formatDate(meeting.date) }}</td>
+            <td>{{ meeting.time }}</td>
+            <td>{{ meeting.location }}</td>
+            <td>{{ meeting.description }}</td>
+            <td>
+              <button class="delete-button" (click)="removeMeeting(meeting.id)">Cancel</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

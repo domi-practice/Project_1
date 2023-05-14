@@ -1,0 +1,20 @@
+<form>
+    <label for="meeting-client">Client:</label>
+    <select id="meeting-client" name="meeting-client" required>
+        <option value="">Select a client</option>
+        <!-- Add client options here -->
+    </select>
+    <label for="meeting-date">Date:</label>
+    <input type="date" id="meeting-date" name="meeting-date" required>
+    <label for="meeting-time">Time:</label>
+    <input type="time" id="meeting-time" name="meeting-time" required>
+    <label for="meeting-location">Location:</label>
+    <input type="text" id="meeting-location" name="meeting-location" required>
+    <button type="submit">Schedule Meeting</button>
+</form>
+
+<ul>
+  <li *ngFor="let meeting of meetings">
+    {{ meeting.title }} - {{ meeting.date }}
+  </li>
+</ul>
